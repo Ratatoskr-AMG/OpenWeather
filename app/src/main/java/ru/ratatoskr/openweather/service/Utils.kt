@@ -27,9 +27,6 @@ class Utils {
                     diff=curr_diff
                 }
             }
-
-
-
             return day
         }
 
