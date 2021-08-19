@@ -34,9 +34,10 @@ class Utils {
             var day : Daily? = null
             var diff : Double? = null
             for (value in daily!!) {
-                var curr_diff = value?.sunset!!.minus(value?.sunrise!!)
+                var curr_diff = value?.sunset!!.toDouble() - value?.sunrise!!.toDouble()
                 if(diff==null || curr_diff > diff){
                     day=value
+                    day!!.setSunshine(getDateTime(curr_diff.toInt().toString(), "HH:mm"))
                     diff=curr_diff.toDouble()
                 }
             }

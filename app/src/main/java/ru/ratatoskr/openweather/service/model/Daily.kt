@@ -76,9 +76,15 @@ class Daily {
     var uvi: Double? = null
 
     var diff: Double? = null
+    var sunshine: String? = null
 
     @JvmName("setDiff1")
     fun setDiff(d: Double?) {
         diff =d
+    }
+
+    @JvmName("setSunshine1")
+    fun setSunshine(s: String?) {
+        sunshine = s
     }
 }
