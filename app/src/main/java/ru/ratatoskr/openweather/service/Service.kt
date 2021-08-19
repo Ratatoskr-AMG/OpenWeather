@@ -24,12 +24,14 @@ class Service (context : AppCompatActivity, appid: String) : retrofit2.Callback<
         .baseUrl("https://api.openweathermap.org/data/2.5/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    private val service: Connector = retrofit.create(Connector::class.java)
+    private val connector: Connector = retrofit.create(Connector::class.java)
 
     fun load() {
-        loading = true
-        val call: Call<Forecast?>? = service.search(appid)
-        call!!.enqueue(this)
+        if(!loading){
+            loading = true
+            val call: Call<Forecast?>? = connector.search(appid)
+            call!!.enqueue(this)
+        }
     }
 
     override fun onResponse(call: Call<Forecast?>, response: Response<Forecast?>) {
