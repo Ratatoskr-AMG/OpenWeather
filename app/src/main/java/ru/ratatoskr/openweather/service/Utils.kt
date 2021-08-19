@@ -2,6 +2,7 @@ package ru.ratatoskr.openweather.service
 
 import android.util.Log
 import ru.ratatoskr.openweather.service.model.Daily
+import java.lang.Math.abs
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,12 +20,16 @@ class Utils {
             var day : Daily? = null
             var diff : Double? = null
             for (value in daily!!) {
-                var curr_diff = value.temp!!.night!!.minus(value.feelsLike!!.night!!.toLong())
+                var curr_diff = abs(value.temp!!.night!!.toDouble() - value.feelsLike!!.night!!.toDouble())
                 if(diff==null || curr_diff < diff){
                     day=value
+                    day!!.setDiff(Math.round(curr_diff * 1000.0) / 1000.0);
                     diff=curr_diff
                 }
             }
+
+
+
             return day
         }
 

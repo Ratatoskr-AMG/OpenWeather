@@ -75,5 +75,10 @@ class Daily {
     @Expose
     var uvi: Double? = null
 
+    var diff: Double? = null
 
+    @JvmName("setDiff1")
+    fun setDiff(d: Double?) {
+        diff =d
+    }
 }

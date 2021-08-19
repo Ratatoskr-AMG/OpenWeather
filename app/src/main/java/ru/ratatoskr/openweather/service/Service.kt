@@ -37,7 +37,7 @@ class Service (context : AppCompatActivity, appid: String) : retrofit2.Callback<
         list!!.setAdapter(adapter)
         var closestNight = Utils.closestNight(response.body()!!.daily)
         var longestDay = Utils.longestDay(response.body()!!.daily)
-        closestNightTV!!.setText("Most accurate night prognosis at "+Utils.getDateTime(closestNight!!.dt!!.toString(), "dd/MM"))
+        closestNightTV!!.setText("Most accurate night prognosis (difference is "+closestNight!!.diff.toString()+"°) at "+Utils.getDateTime(closestNight!!.dt!!.toString(), "dd/MM"))
         longestDayTV!!.setText("Longest day at "+Utils.getDateTime(longestDay!!.dt!!.toString(), "dd/MM"))
         loading = false
     }
